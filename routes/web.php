@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/feedback', function () {
-    return view('feedback');
-});
+/*
+ * Appends routes are used with feedback page
+ */
+Route::get('/feedback', [Controllers\FeedbackController::class, "index"]);
+Route::post('/feedback/create', [Controllers\FeedbackController::class, "create"]);
